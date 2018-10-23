@@ -1,15 +1,24 @@
 pipeline {
     agent {
         docker {
-            image 'node:8-alpine'
-            args '-p 3000:3000'
+            //image 'node:8-alpine'
+            image 'microsoft/dotnet:2.1-sdk-alpine'
         }
+    }
+    environment {
+        CI = 'true'
     }
     stages {
         stage('Build') {
             steps {
-                sh 'npm --version'
-                sh 'node --version'
+                // sh 'npm --version'
+                // sh 'node --version'
+                sh 'dotnet --info'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
