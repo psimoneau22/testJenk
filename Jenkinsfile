@@ -5,8 +5,10 @@ pipeline {
     }
     stages {
         stage('Build dotnet') {
-            agent docker {
-                image 'microsoft/dotnet:2.1-sdk-alpine'
+            agent {
+                docker {
+                    image 'microsoft/dotnet:2.1-sdk-alpine'
+                }
             }
             steps {
                 pwd()
@@ -17,8 +19,10 @@ pipeline {
         }
         stage('Build react') {
             steps {
-                agent docker {
-                    image 'node:8-alpine'
+                agent {
+                    docker {
+                        image 'node:8-alpine'
+                    }
                 }
                 dir('server') {
                     pwd()
