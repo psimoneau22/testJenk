@@ -18,12 +18,12 @@ pipeline {
             }
         }
         stage('Build react') {
-            steps {
-                agent {
-                    docker {
-                        image 'node:8-alpine'
-                    }
+            agent {
+                docker {
+                    image 'node:8-alpine'
                 }
+            }
+            steps {
                 dir('server') {
                     pwd()
 
