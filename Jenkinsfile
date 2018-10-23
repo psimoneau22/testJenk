@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm --version'
+                sh 'node --version'
             }
         }
     }
