@@ -13,27 +13,27 @@ pipeline {
             steps {
                 pwd()
                 sh 'dotnet --info'
-                sh 'dotnet publish -o ./dist -r win-x64'
+                sh 'dotnet publish -o ./dist'
                 archiveArtifacts artifacts: 'dist/*', fingerprint: true
             }
         }
-        stage('Build react') {
-            agent {
-                docker {
-                    image 'node:8-alpine'
-                }
-            }
-            steps {
-                dir('server') {
-                    pwd()
+        // stage('Build react') {
+        //     agent {
+        //         docker {
+        //             image 'node:8-alpine'
+        //         }
+        //     }
+        //     steps {
+        //         dir('server') {
+        //             pwd()
 
-                    sh 'npm --version'
-                    sh 'node --version'
-                    sh 'npm install'
-                    sh 'npm run build'
-                    archiveArtifacts artifacts: 'build/*', fingerprint: true
-                }
-            }
-        }
+        //             sh 'npm --version'
+        //             sh 'node --version'
+        //             sh 'npm install'
+        //             sh 'npm run build'
+        //             archiveArtifacts artifacts: 'build/*', fingerprint: true
+        //         }
+        //     }
+        // }
     }
 }
