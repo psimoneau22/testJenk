@@ -29,6 +29,7 @@ pipeline {
 
                     sh 'npm --version'
                     sh 'node --version'
+                    sh 'npm install'
                     sh 'npm run build'
                     archiveArtifacts artifacts: 'build/*', fingerprint: true
                 }
