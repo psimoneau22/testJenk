@@ -14,6 +14,7 @@ pipeline {
                 // sh 'npm --version'
                 // sh 'node --version'
                 sh 'dotnet --info'
+                sh 'dotnet publish -o ./dist'
             }
         }
         stage('Test') {
