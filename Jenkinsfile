@@ -28,7 +28,7 @@ pipeline {
                     pwd()
 
                     sh 'npm --version'
-                    sh 'node --version'sh './jenkins/scripts/test.sh'
+                    sh 'node --version'
                     sh 'npm run build'
                     archiveArtifacts artifacts: 'build/*', fingerprint: true
                 }
