@@ -20,8 +20,8 @@ pipeline {
                 agent docker {
                     image 'node:8-alpine'
                 }
-                dir() {
-                    pwd('server')
+                dir('server') {
+                    pwd()
 
                     sh 'npm --version'
                     sh 'node --version'sh './jenkins/scripts/test.sh'
