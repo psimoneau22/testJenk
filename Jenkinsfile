@@ -14,7 +14,7 @@ pipeline {
                 pwd()
                 sh 'dotnet --info'
                 sh 'dotnet publish -o ./dist -r win-x64'
-                archiveArtifacts artifacts: './dist/*', fingerprint: true
+                archiveArtifacts artifacts: 'dist/*', fingerprint: true
             }
         }
         stage('Build react') {
@@ -30,7 +30,7 @@ pipeline {
                     sh 'npm --version'
                     sh 'node --version'
                     sh 'npm run build'
-                    archiveArtifacts artifacts: './build/*', fingerprint: true
+                    archiveArtifacts artifacts: 'build/*', fingerprint: true
                 }
             }
         }
