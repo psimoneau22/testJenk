@@ -13,8 +13,8 @@ pipeline {
             steps {
                 pwd()
                 sh 'dotnet --info'
-                sh 'dotnet publish -o ./dist'
-                archiveArtifacts artifacts: './bin/Release/netcoreapp2.1/win-x64/publish/*', fingerprint: true
+                sh 'dotnet publish -o ./dist -r win-x64'
+                archiveArtifacts artifacts: './dist/*', fingerprint: true
             }
         }
         stage('Build react') {
